@@ -1,0 +1,66 @@
+<%- include('partials/header') %>
+
+<h1>Transactions Dashboard</h1>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <span class="stat-number"><%= stats.total %></span>
+    <span class="stat-label">Total</span>
+  </div>
+  <div class="stat-card genuine">
+    <span class="stat-number"><%= stats.genuine %></span>
+    <span class="stat-label">Genuine</span>
+  </div>
+  <div class="stat-card suspicious">
+    <span class="stat-number"><%= stats.suspicious %></span>
+    <span class="stat-label">Suspicious</span>
+  </div>
+  <div class="stat-card fraud">
+    <span class="stat-number"><%= stats.fraud %></span>
+    <span class="stat-label">Fraud</span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <a href="/transactions" class="chip <%= activeFilter === 'All' ? 'active' : '' %>">All</a>
+  <a href="/transactions?status=Genuine" class="chip <%= activeFilter === 'Genuine' ? 'active' : '' %>">Genuine</a>
+  <a href="/transactions?status=Suspicious" class="chip <%= activeFilter === 'Suspicious' ? 'active' : '' %>">Suspicious</a>
+  <a href="/transactions?status=Fraud" class="chip <%= activeFilter === 'Fraud' ? 'active' : '' %>">Fraud</a>
+</div>
+
+<% if (transactions.length === 0) { %>
+  <p class="empty-state">No transactions found. <a href="/transactions/new">Add one</a>.</p>
+<% } else { %>
+<table class="txn-table">
+  <thead>
+    <tr>
+      <th>Sender UPI</th>
+      <th>Receiver UPI</th>
+      <th>Amount (₹)</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% transactions.forEach(txn => { %>
+      <tr>
+        <td><%= txn.senderUPI %></td>
+        <td><%= txn.receiverUPI %></td>
+        <td>₹<%= Number(txn.amount).toLocaleString('en-IN') %></td>
+        <td><%= new Date(txn.date).toLocaleString('en-IN') %></td>
+        <td><span class="badge badge-<%= txn.status.toLowerCase() %>"><%= txn.status %></span></td>
+        <td class="actions">
+          <a href="/transactions/<%= txn.id %>" class="btn btn-sm">View</a>
+          <a href="/transactions/<%= txn.id %>/edit" class="btn btn-sm btn-edit">Edit</a>
+          <form action="/transactions/<%= txn.id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this transaction?');" style="display:inline">
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<% } %>
+
+<%- include('partials/footer') %>

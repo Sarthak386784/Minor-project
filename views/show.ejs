@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+
+<a href="/transactions" class="back-link">&larr; Back to all transactions</a>
+
+<div class="detail-card">
+  <div class="detail-header">
+    <h1>Transaction Details</h1>
+    <span class="badge badge-<%= txn.status.toLowerCase() %>"><%= txn.status %></span>
+  </div>
+
+  <table class="detail-table">
+    <tr><th>Sender UPI ID</th><td><%= txn.senderUPI %></td></tr>
+    <tr><th>Receiver UPI ID</th><td><%= txn.receiverUPI %></td></tr>
+    <tr><th>Amount</th><td>₹<%= Number(txn.amount).toLocaleString('en-IN') %></td></tr>
+    <tr><th>Date</th><td><%= new Date(txn.date).toLocaleString('en-IN') %></td></tr>
+    <tr><th>Fraud Analysis</th><td><%= txn.reason %></td></tr>
+    <tr><th>Created At</th><td><%= new Date(txn.createdAt).toLocaleString('en-IN') %></td></tr>
+    <% if (txn.updatedAt) { %>
+      <tr><th>Last Updated</th><td><%= new Date(txn.updatedAt).toLocaleString('en-IN') %></td></tr>
+    <% } %>
+  </table>
+
+  <div class="form-actions">
+    <a href="/transactions/<%= txn.id %>/edit" class="btn btn-edit">Edit</a>
+    <form action="/transactions/<%= txn.id %>?_method=DELETE" method="POST" onsubmit="return confirm('Delete this transaction?');">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

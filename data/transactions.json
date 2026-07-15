@@ -1,0 +1,42 @@
+[
+  {
+    "id": "0fdacef6-8706-4f73-87ac-123547ada251",
+    "senderUPI": "dhruv",
+    "receiverUPI": "13320912@ff9f",
+    "amount": 100000000,
+    "date": "2026-07-15T09:06:54.001Z",
+    "status": "Suspicious",
+    "reason": "Amount ₹100000000 exceeds high-risk threshold of ₹100000",
+    "createdAt": "2026-07-15T09:06:54.002Z"
+  },
+  {
+    "id": "5e6c15fa-3a3b-49cb-815a-04c6daf05249",
+    "senderUPI": "rahul",
+    "receiverUPI": "diva@1256e3e79",
+    "amount": 100,
+    "date": "2026-07-15T09:07:19.559Z",
+    "status": "Genuine",
+    "reason": "No fraud indicators detected",
+    "createdAt": "2026-07-15T09:07:19.565Z"
+  },
+  {
+    "id": "f097cbe8-bb2e-4c9a-9ee4-d58bca384664",
+    "senderUPI": "m,lfei9",
+    "receiverUPI": "de dsiec9w9qm@cxz;lf9ovm",
+    "amount": 10000000000000,
+    "date": "2026-07-15T09:08:00.000Z",
+    "status": "Suspicious",
+    "reason": "Amount ₹10000000000000 exceeds high-risk threshold of ₹100000",
+    "createdAt": "2026-07-15T09:09:13.349Z"
+  },
+  {
+    "id": "9044f598-a537-471b-aeb4-db316068d34a",
+    "senderUPI": "fraud",
+    "receiverUPI": "sssszHUDWJXMKO",
+    "amount": 12466890000000000,
+    "date": "2026-07-15T09:09:51.765Z",
+    "status": "Suspicious",
+    "reason": "Amount ₹12466890000000000 exceeds high-risk threshold of ₹100000",
+    "createdAt": "2026-07-15T09:09:51.773Z"
+  }
+]
